@@ -39,15 +39,13 @@ jobs:
         run: mkdir ./dist
 
       - name: Build scholar sync
-        working-directory: ./scholar-sync/frontend
         run: |
           npm install 
           npm run build
 
       - name: Populate dist
-        working-directory: .
         run: |
-          mv ./scholar-sync/frontend/dist/frontend/browser ./dist/sync
+          mv ./dist/frontend/browser ./dist/sync
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
