@@ -1,0 +1,27 @@
+<div class="wrapper">
+  <h2 class="title">Scholar Sync</h2>
+
+  <p>A convienient, easy way to pair Park Scholars for engaging conversation!</p>
+
+  <p class="spaced">
+    Park Matcher takes in a CSV file of scholars and their descriptions and returns a list of paired scholars.
+
+    The columns in the CSV file must match the spec. Reference <a href="https://docs.google.com/spreadsheets/d/1ZPBqe6m0fXeAveL-AOYIhC5AUpkTQlKQqEyocln6fq0/edit?usp=sharing">example data</a> to understand how the CSV file must be formatted.
+  </p>
+
+  <form (ngSubmit)="onSubmit()" #csvForm="ngForm">
+    <input type="file" (change)="onFileChange($event)" accept=".csv" />
+    <button type="submit" [disabled]="!selectedFile">Upload</button>
+  </form>
+
+  <div class="results" *ngIf="this.response != null">
+    <p *ngFor="let pair of response.pairs">{{pair[0]}} - {{pair[1]}}</p>
+  </div>
+
+  <div class="footer-container">
+    <footer>
+      <p class="text-left compact">© {{ copyright }} Park Scholarships. All rights reserved.</p>
+      <p class="text-left compact">Website created by <a target="_blank" href="mailto:contact@ethanbaker.dev">contact&#64;ethanbaker.dev</a></p>
+    </footer>
+  </div>
+</div>
